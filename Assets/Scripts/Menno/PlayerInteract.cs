@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public Canvas information;
+
     public float holdKey = 5f;
     float holdTimer;
 
     public float range = 2;
-
-    //public Canvas information;
 
     // Start is called before the first frame update
     void Start()
@@ -76,11 +76,11 @@ public class PlayerInteract : MonoBehaviour
             }
 
             //object
-            else if (hit.collider.tag == "object")
+            else if (hit.collider.tag == "information")
             {
                 if (Input.GetKey("e"))
                 {
-                    //Object();
+                    Information();
                 }
             }
         }
@@ -96,11 +96,11 @@ public class PlayerInteract : MonoBehaviour
         print("its a switch");
     }
 
-    /*public void Object()
+    public void Information()
     {
-        print("its a object");
-        //information.gameObject.SetActive(true);
-    }*/
+        print("its some information");
+        information.gameObject.SetActive(true);
+    }
 
     void well()
     {
