@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
     public float holdKey = 5f;
     float holdTimer;
 
-    public float range = 5;
+    public float range = 2;
 
-    public Canvas information;
+    //public Canvas information;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +23,12 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Raycast
         Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward * range));
+        RaycastHit hit;
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward * range));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, range))
+        if (Physics.Raycast(ray, out hit, range))
         {
             //Generator
             if (hit.collider.tag == "generator")
@@ -76,7 +80,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    Object();
+                    //Object();
                 }
             }
         }
@@ -92,11 +96,11 @@ public class PlayerInteract : MonoBehaviour
         print("its a switch");
     }
 
-    public void Object()
+    /*public void Object()
     {
         print("its a object");
-        information.gameObject.SetActive(true);
-    }
+        //information.gameObject.SetActive(true);
+    }*/
 
     void well()
     {
