@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - generator
+  - switch
+  - well
+  - information
   layers:
   - Default
   - TransparentFX
