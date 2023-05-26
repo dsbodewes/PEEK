@@ -1,15 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
-    public Canvas information;
+    public GameObject information;
+    public GameObject player;
 
+    public float maxDistance = 3;
+
+    int totalObject = 0;
+
+    bool isUsedObject = false;
+
+    void Update()
+    {
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        //Debug.Log("The distance is:" + distance);
+
+        if (distance > maxDistance)
+        {
+            information.SetActive(false);
+        }
+    }
     public void Object()
     {
-        print("its a object");
+        if (isUsedObject == false)
+        {
+            totalObject++;
+            isUsedObject = true;
+        }
+
         information.gameObject.SetActive(true);
+        print("Total objects: " + totalObject);
     }
 }

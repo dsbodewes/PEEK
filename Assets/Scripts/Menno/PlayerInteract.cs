@@ -7,20 +7,27 @@ using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public Canvas information;
-
-    public float holdKey = 5f;
+    public int holdKey = 5;
+    public float range = 2;
     float holdTimer;
 
-    public float range = 2;
+    int totalGenerators = 0;
 
-    // Start is called before the first frame update
+    Interaction interaction;
+
+    bool isUsedGen1 = false;
+    bool isUsedGen2 = false;
+    bool isUsedGen3 = false;
+    bool isUsedGen4 = false;
+    bool isUsedSwitch = false;
+    bool isUsedWell = false;
+
     void Start()
     {
         holdTimer = holdKey;
+        interaction = GameObject.FindGameObjectWithTag("information").GetComponent<Interaction>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Raycast
@@ -30,16 +37,73 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, range))
         {
-            //Generator
-            if (hit.collider.tag == "generator")
+            //Generator 1
+            if (hit.collider.tag == "generator1")
             {
                 if (Input.GetKey("e"))
                 {
                     holdTimer -= Time.deltaTime;
                     if (holdTimer < 0)
+                    {
+                        if (isUsedGen1 == false)
+                        {
+                            Generator1();
+                        }
+                    }
+                }
+                else
+                    holdTimer = holdKey;
+            }
 
-                        //function
-                        Generator();
+            //Generator 2
+            if (hit.collider.tag == "generator2")
+            {
+                if (Input.GetKey("e"))
+                {
+                    holdTimer -= Time.deltaTime;
+                    if (holdTimer < 0)
+                    {
+                        if (isUsedGen2 == false)
+                        {
+                            Generator2();
+                        }
+                    }
+                }
+                else
+                    holdTimer = holdKey;
+            }
+
+            //Generator 3
+            if (hit.collider.tag == "generator3")
+            {
+                if (Input.GetKey("e"))
+                {
+                    holdTimer -= Time.deltaTime;
+                    if (holdTimer < 0)
+                    {
+                        if (isUsedGen3 == false)
+                        {
+                            Generator3();
+                        }
+                    }
+                }
+                else
+                    holdTimer = holdKey;
+            }
+
+            //Generator 4
+            else if (hit.collider.tag == "generator4")
+            {
+                if (Input.GetKey("e"))
+                {
+                    holdTimer -= Time.deltaTime;
+                    if (holdTimer < 0)
+                    {
+                        if (isUsedGen4 == false)
+                        {
+                            Generator4();
+                        }
+                    }
                 }
                 else
                     holdTimer = holdKey;
@@ -52,9 +116,15 @@ public class PlayerInteract : MonoBehaviour
                 {
                     holdTimer -= Time.deltaTime;
                     if (holdTimer < 0)
-
-                        //function
-                        Switch();
+                    {
+                        if (totalGenerators >= 4)
+                        {
+                            if (isUsedSwitch == false)
+                            {
+                                Switch();
+                            }
+                        }
+                    }
                 }
                 else
                     holdTimer = holdKey;
@@ -67,9 +137,12 @@ public class PlayerInteract : MonoBehaviour
                 {
                     holdTimer -= Time.deltaTime;
                     if (holdTimer < 0)
-
-                        //function
-                        well();
+                    {
+                        if (isUsedWell == false)
+                        {
+                            well();
+                        }
+                    }
                 }
                 else
                     holdTimer = holdKey;
@@ -80,30 +153,46 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    Information();
+                    interaction.Object();
                 }
             }
         }
     }
 
-    void Generator()
+    void Generator1()
     {
-        print("its a generator");
+        totalGenerators++;
+        print("Total generators: " + totalGenerators);
+        isUsedGen1 = true;
+    }
+    void Generator2()
+    {
+        totalGenerators++;
+        print("Total generators: " + totalGenerators);
+        isUsedGen2 = true;
+    }
+    void Generator3()
+    {
+        totalGenerators++;
+        print("Total generators: " + totalGenerators);
+        isUsedGen3 = true;
+    }
+    void Generator4()
+    {
+        totalGenerators++;
+        print("Total generators: " + totalGenerators);
+        isUsedGen4 = true;
     }
 
     void Switch()
     {
         print("its a switch");
-    }
-
-    public void Information()
-    {
-        print("its some information");
-        information.gameObject.SetActive(true);
+        isUsedSwitch = true;
     }
 
     void well()
     {
         print("its a well");
+        isUsedWell = true;
     }
 }
