@@ -48,18 +48,16 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    timerHUD.gameObject.SetActive(true);
-                    timerUI.SetValue();
-
-                    if (holdTimer < 0)
+                    if (isUsedGen1 == false)
                     {
-                        timerHUD.gameObject.SetActive(false);
+                        timerHUD.gameObject.SetActive(true);
+                        timerUI.SetValue();
 
-                        if (isUsedGen1 == false)
+                        if (holdTimer < 0)
                         {
                             Generator1();
+                            timerHUD.gameObject.SetActive(false);
                         }
-
                     }
                 }
                 else
@@ -76,15 +74,15 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    timerHUD.gameObject.SetActive(true);
-
-                    if (holdTimer < 0)
+                    if (isUsedGen2 == false)
                     {
-                        timerHUD.gameObject.SetActive(false);
+                        timerHUD.gameObject.SetActive(true);
+                        timerUI.SetValue();
 
-                        if (isUsedGen2 == false)
+                        if (holdTimer < 0)
                         {
                             Generator2();
+                            timerHUD.gameObject.SetActive(false);
                         }
                     }
                 }
@@ -102,15 +100,15 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    timerHUD.gameObject.SetActive(true);
-
-                    if (holdTimer < 0)
+                    if (isUsedGen3 == false)
                     {
-                        timerHUD.gameObject.SetActive(false);
+                        timerHUD.gameObject.SetActive(true);
+                        timerUI.SetValue();
 
-                        if (isUsedGen3 == false)
+                        if (holdTimer < 0)
                         {
                             Generator3();
+                            timerHUD.gameObject.SetActive(false);
                         }
                     }
                 }
@@ -128,15 +126,15 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    timerHUD.gameObject.SetActive(true);
-
-                    if (holdTimer < 0)
+                    if (isUsedGen4 == false)
                     {
-                        timerHUD.gameObject.SetActive(false);
+                        timerHUD.gameObject.SetActive(true);
+                        timerUI.SetValue();
 
-                        if (isUsedGen4 == false)
+                        if (holdTimer < 0)
                         {
                             Generator4();
+                            timerHUD.gameObject.SetActive(false);
                         }
                     }
                 }
@@ -154,17 +152,17 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    timerHUD.gameObject.SetActive(true);
-
-                    if (holdTimer < 0)
+                    if (isUsedSwitch == false)
                     {
-                        timerHUD.gameObject.SetActive(false);
+                        timerHUD.gameObject.SetActive(true);
+                        timerUI.SetValue();
 
-                        if (totalGenerators >= 4)
+                        if (holdTimer < 0)
                         {
-                            if (isUsedSwitch == false)
+                            if (totalGenerators == 4)
                             {
                                 Switch();
+                                timerHUD.gameObject.SetActive(false);
                             }
                         }
                     }
@@ -183,15 +181,14 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    timerHUD.gameObject.SetActive(true);
-
-                    if (holdTimer < 0)
+                    if (isUsedWell == false)
                     {
-                        timerHUD.gameObject.SetActive(false);
+                        timerHUD.gameObject.SetActive(true);
 
-                        if (isUsedWell == false)
+                        if (holdTimer < 0)
                         {
-                            well();
+                            timerHUD.gameObject.SetActive(false);
+                             well();
                         }
                     }
                 }
