@@ -11,8 +11,6 @@ public class Interaction : MonoBehaviour
 
     public float maxDistance = 3;
 
-    int totalObject = 0;
-
     bool isUsedObject = false;
 
     void Update()
@@ -29,11 +27,9 @@ public class Interaction : MonoBehaviour
     {
         if (isUsedObject == false)
         {
-            totalObject++;
             isUsedObject = true;
         }
 
         information.gameObject.SetActive(true);
-        print("Total objects: " + totalObject);
     }
 }

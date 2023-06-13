@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +12,10 @@ public class PlayerInteract : MonoBehaviour
     float holdTimer;
 
     public int holdKey = 5;
-    int totalGenerators = 0;
 
-    public TimerUI timerUI;
     Interaction interaction;
 
+    int totalGenerators = 0;
     bool isUsedGen1 = false;
     bool isUsedGen2 = false;
     bool isUsedGen3 = false;
@@ -23,7 +23,13 @@ public class PlayerInteract : MonoBehaviour
     bool isUsedSwitch = false;
     bool isUsedWell = false;
 
+    int totalObjects = 0;
+
+    public TimerUI timerUI;
     public GameObject timerHUD;
+
+    string currentObjective;
+    public TMP_Text currentObjectiveText;
 
     void Start()
     {
@@ -74,15 +80,18 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    if (isUsedGen2 == false)
+                    if (isUsedGen1 == true)
                     {
-                        timerHUD.gameObject.SetActive(true);
-                        timerUI.SetValue();
-
-                        if (holdTimer < 0)
+                        if (isUsedGen2 == false)
                         {
-                            Generator2();
-                            timerHUD.gameObject.SetActive(false);
+                            timerHUD.gameObject.SetActive(true);
+                            timerUI.SetValue();
+
+                            if (holdTimer < 0)
+                            {
+                                Generator2();
+                                timerHUD.gameObject.SetActive(false);
+                            }
                         }
                     }
                 }
@@ -100,15 +109,18 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    if (isUsedGen3 == false)
+                    if (isUsedGen2 == true)
                     {
-                        timerHUD.gameObject.SetActive(true);
-                        timerUI.SetValue();
-
-                        if (holdTimer < 0)
+                        if (isUsedGen3 == false)
                         {
-                            Generator3();
-                            timerHUD.gameObject.SetActive(false);
+                            timerHUD.gameObject.SetActive(true);
+                            timerUI.SetValue();
+
+                            if (holdTimer < 0)
+                            {
+                                Generator3();
+                                timerHUD.gameObject.SetActive(false);
+                            }
                         }
                     }
                 }
@@ -126,15 +138,18 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    if (isUsedGen4 == false)
+                    if (isUsedGen3 == true)
                     {
-                        timerHUD.gameObject.SetActive(true);
-                        timerUI.SetValue();
-
-                        if (holdTimer < 0)
+                        if (isUsedGen4 == false)
                         {
-                            Generator4();
-                            timerHUD.gameObject.SetActive(false);
+                            timerHUD.gameObject.SetActive(true);
+                            timerUI.SetValue();
+
+                            if (holdTimer < 0)
+                            {
+                                Generator4();
+                                timerHUD.gameObject.SetActive(false);
+                            }
                         }
                     }
                 }
@@ -152,14 +167,14 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    if (isUsedSwitch == false)
+                    if (isUsedGen4 == true)
                     {
-                        timerHUD.gameObject.SetActive(true);
-                        timerUI.SetValue();
-
-                        if (holdTimer < 0)
+                        if (isUsedSwitch == false)
                         {
-                            if (totalGenerators == 4)
+                            timerHUD.gameObject.SetActive(true);
+                            timerUI.SetValue();
+
+                            if (holdTimer < 0)
                             {
                                 Switch();
                                 timerHUD.gameObject.SetActive(false);
@@ -215,42 +230,45 @@ public class PlayerInteract : MonoBehaviour
     void Generator1()
     {
         totalGenerators++;
-        print("Total generators: " + totalGenerators);
+        Debug.Log("Total generators: " + totalGenerators);
         isUsedGen1 = true;
     }
     void Generator2()
     {
         totalGenerators++;
-        print("Total generators: " + totalGenerators);
+        Debug.Log("Total generators: " + totalGenerators);
         isUsedGen2 = true;
     }
     void Generator3()
     {
         totalGenerators++;
-        print("Total generators: " + totalGenerators);
+        Debug.Log("Total generators: " + totalGenerators);
         isUsedGen3 = true;
     }
     void Generator4()
     {
         totalGenerators++;
-        print("Total generators: " + totalGenerators);
+        currentObjectiveText.text = "Turn on the lights";
+        Debug.Log("Total generators: " + totalGenerators);
         isUsedGen4 = true;
     }
 
     void Switch()
     {
-        print("its a switch");
+        Debug.Log("its a switch");
         isUsedSwitch = true;
     }
 
     void well()
     {
-        print("its a well");
+        Debug.Log("its a well");
         isUsedWell = true;
     }
 
     void Object()
     {
         interaction.Object();
+        totalObjects++;
+        Debug.Log("Total objects: " + totalObjects);
     }
 }
