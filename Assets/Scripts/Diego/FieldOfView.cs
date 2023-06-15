@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class FieldOfView : MonoBehaviour
 {
     public float radius;
     [Range(0, 360)]
     public float angle;
+    public float spookyRadius;
 
     public GameObject playerRef;
 
@@ -14,12 +18,33 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstructionMask;
 
     public bool canSeePlayer;
+    public bool inRadius;
+    public bool inSpookyRadius;
+
+    public NavMeshAgent enemy;
 
     private void Start()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
+
+    /*private void Update()
+    {
+        if (playerRef in radius)
+        {
+            spookyRadius = true;
+        }
+        else
+        {
+            spookyRadius = false;
+        }
+
+        if (inSpookyRadius == true)
+        {
+            Jumpscare();
+        }
+    }*/
 
     private IEnumerator FOVRoutine()
     {
@@ -31,6 +56,7 @@ public class FieldOfView : MonoBehaviour
             FieldOfViewCheck();
         }
     }
+
 
     private void FieldOfViewCheck()
     {
@@ -57,6 +83,20 @@ public class FieldOfView : MonoBehaviour
         else if (canSeePlayer)
             canSeePlayer = false;
 
-        
+        if (canSeePlayer == true)
+        {
+            enemy.SetDestination(playerRef.transform.position);
+            angle = 360;
+        }
+        else
+        {
+            angle = 90;
+        }
     }
+
+
+    /*void Jumpscare()
+    {
+        Debug.Log("BOOOOOOO AHHHHHHHH");
+    }*/
 }
