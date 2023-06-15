@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isSprinting = false;
 
     // Stamina Regen //
-    private float staminaDrain = 25.0f;
-    private float staminaRegen = 15.0f;
+    public float staminaDrain = 30.0f;
+    public float staminaRegen = 12.0f;
 
     // Stamina Bar //
     public StaminaBar staminaBar;
