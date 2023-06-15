@@ -28,8 +28,8 @@ public class PlayerInteract : MonoBehaviour
     public TimerUI timerUI;
     public GameObject timerHUD;
 
-    string currentObjective;
     public TMP_Text currentObjectiveText;
+    public TMP_Text TotalFound;
 
     void Start()
     {
@@ -230,32 +230,33 @@ public class PlayerInteract : MonoBehaviour
     void Generator1()
     {
         totalGenerators++;
-        Debug.Log("Total generators: " + totalGenerators);
+        TotalFound.text = "Total activated: " + totalGenerators + " / 4" ;
         isUsedGen1 = true;
     }
     void Generator2()
     {
         totalGenerators++;
-        Debug.Log("Total generators: " + totalGenerators);
+        TotalFound.text = "Total activated: " + totalGenerators + " / 4";
         isUsedGen2 = true;
     }
     void Generator3()
     {
         totalGenerators++;
-        Debug.Log("Total generators: " + totalGenerators);
+        TotalFound.text = "Total activated: " + totalGenerators + " / 4";
         isUsedGen3 = true;
     }
     void Generator4()
     {
         totalGenerators++;
+        TotalFound.text = "Activate the switch";
         currentObjectiveText.text = "Turn on the lights";
-        Debug.Log("Total generators: " + totalGenerators);
         isUsedGen4 = true;
     }
 
     void Switch()
     {
-        Debug.Log("its a switch");
+        TotalFound.text = "ESCAPE";
+        currentObjectiveText.text = "Escape through the gate";
         isUsedSwitch = true;
     }
 
@@ -269,6 +270,16 @@ public class PlayerInteract : MonoBehaviour
     {
         interaction.Object();
         totalObjects++;
-        Debug.Log("Total objects: " + totalObjects);
+
+        if (totalObjects < 8)
+        {
+            TotalFound.text = "Total clues found: " + totalObjects + " / 8";
+        }
+        
+        if (totalObjects == 8)
+        {
+            currentObjectiveText.text = "Fix the generators";
+            TotalFound.text = "Total activated: " + totalGenerators + " / 4";
+        }
     }
 }
