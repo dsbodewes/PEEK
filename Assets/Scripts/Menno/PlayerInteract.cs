@@ -8,13 +8,19 @@ using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
+    //Raycast
     public float range = 2;
-    float holdTimer;
 
-    public int holdKey = 5;
-
+    //Interaction
     Interaction interaction;
 
+    //Timer
+    public int holdKey = 5;
+    float holdTimer;
+    public TimerUI timerUI;
+    public GameObject timerHUD;
+
+    // Generator
     int totalGenerators = 0;
     bool isUsedGen1 = false;
     bool isUsedGen2 = false;
@@ -23,13 +29,14 @@ public class PlayerInteract : MonoBehaviour
     bool isUsedSwitch = false;
     bool isUsedWell = false;
 
+    //Object
     int totalObjects = 0;
 
-    public TimerUI timerUI;
-    public GameObject timerHUD;
-
+    //HUD Text
     public TMP_Text currentObjectiveText;
     public TMP_Text TotalFound;
+    public TypewriterUI typewriterUILeft;
+    public TypewriterUI typewriterUIRight;
 
     void Start()
     {
@@ -250,6 +257,8 @@ public class PlayerInteract : MonoBehaviour
         totalGenerators++;
         TotalFound.text = "Activate the switch";
         currentObjectiveText.text = "Turn on the lights";
+        typewriterUILeft.Type();
+        typewriterUIRight.Type();
         isUsedGen4 = true;
     }
 
@@ -257,6 +266,8 @@ public class PlayerInteract : MonoBehaviour
     {
         TotalFound.text = "ESCAPE";
         currentObjectiveText.text = "Escape through the gate";
+        typewriterUILeft.Type();
+        typewriterUIRight.Type();
         isUsedSwitch = true;
     }
 
@@ -280,6 +291,8 @@ public class PlayerInteract : MonoBehaviour
         {
             currentObjectiveText.text = "Fix the generators";
             TotalFound.text = "Total activated: " + totalGenerators + " / 4";
+            typewriterUILeft.Type();
+            typewriterUIRight.Type();
         }
     }
 }

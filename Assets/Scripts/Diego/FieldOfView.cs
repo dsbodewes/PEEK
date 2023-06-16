@@ -10,7 +10,6 @@ public class FieldOfView : MonoBehaviour
     public float radius;
     [Range(0, 360)]
     public float angle;
-    public float spookyRadius;
 
     public GameObject playerRef;
 
@@ -19,6 +18,9 @@ public class FieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
     public bool inRadius;
+
+    //Jumpscare
+    public float spookyRadius;
     public bool inSpookyRadius;
 
     public NavMeshAgent enemy;
@@ -29,11 +31,11 @@ public class FieldOfView : MonoBehaviour
         StartCoroutine(FOVRoutine());
     }
 
-    /*private void Update()
+   /* private void Update()
     {
-        if (playerRef in radius)
+        if (playerRef in InSpookyRadius)
         {
-            spookyRadius = true;
+            InSpookyRadius = true;
         }
         else
         {
