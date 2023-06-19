@@ -9,7 +9,6 @@ public class TypewriterUI : MonoBehaviour
     TMP_Text _tmpProText;
     string writer;
 
-    [SerializeField] float delayBeforeStart = 0f;
     [SerializeField] float timeBtwChars = 0.1f;
     [SerializeField] string leadingChar = "";
     [SerializeField] bool leadingCharBeforeDelay = false;
@@ -29,7 +28,7 @@ public class TypewriterUI : MonoBehaviour
     }
 
     public void Type()
-        {
+    {
         _tmpProText = GetComponent<TMP_Text>()!;
 
         if (_tmpProText != null)
@@ -39,13 +38,11 @@ public class TypewriterUI : MonoBehaviour
 
             StartCoroutine("TypeWriterTMP");
         }
-        }
+    }
 
     IEnumerator TypeWriterTMP()
     {
         _tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
-
-        yield return new WaitForSeconds(delayBeforeStart);
 
         foreach (char c in writer)
         {

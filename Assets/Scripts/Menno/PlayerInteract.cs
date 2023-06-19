@@ -38,6 +38,13 @@ public class PlayerInteract : MonoBehaviour
     public TypewriterUI typewriterUILeft;
     public TypewriterUI typewriterUIRight;
 
+    //Sounds
+    public AudioSource GeneratorOn1;
+    public AudioSource GeneratorOn2;
+    public AudioSource GeneratorOn3;
+    public AudioSource GeneratorOn4;
+    //public AudioSource GeneratorFix;
+
     void Start()
     {
         holdTimer = holdKey;
@@ -65,6 +72,7 @@ public class PlayerInteract : MonoBehaviour
                     {
                         timerHUD.gameObject.SetActive(true);
                         timerUI.SetValue();
+                        //GeneratorFix.Play();
 
                         if (holdTimer < 0)
                         {
@@ -77,6 +85,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     timerHUD.gameObject.SetActive(false);
                     timerUI.ResetValue();
+                    //GeneratorFix.Stop();
                     holdTimer = holdKey;
                 }
             }
@@ -93,6 +102,7 @@ public class PlayerInteract : MonoBehaviour
                         {
                             timerHUD.gameObject.SetActive(true);
                             timerUI.SetValue();
+                            //GeneratorFix.Play();
 
                             if (holdTimer < 0)
                             {
@@ -106,6 +116,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     timerHUD.gameObject.SetActive(false);
                     timerUI.ResetValue();
+                    //GeneratorFix.Stop();
                     holdTimer = holdKey;
                 }
             }
@@ -122,6 +133,7 @@ public class PlayerInteract : MonoBehaviour
                         {
                             timerHUD.gameObject.SetActive(true);
                             timerUI.SetValue();
+                            //GeneratorFix.Play();
 
                             if (holdTimer < 0)
                             {
@@ -135,6 +147,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     timerHUD.gameObject.SetActive(false);
                     timerUI.ResetValue();
+                    //GeneratorFix.Stop();
                     holdTimer = holdKey;
                 }
             }
@@ -151,6 +164,7 @@ public class PlayerInteract : MonoBehaviour
                         {
                             timerHUD.gameObject.SetActive(true);
                             timerUI.SetValue();
+                            //GeneratorFix.Play();
 
                             if (holdTimer < 0)
                             {
@@ -164,6 +178,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     timerHUD.gameObject.SetActive(false);
                     timerUI.ResetValue();
+                    //GeneratorFix.Stop();
                     holdTimer = holdKey;
                 }
             }
@@ -237,24 +252,28 @@ public class PlayerInteract : MonoBehaviour
     void Generator1()
     {
         totalGenerators++;
+        GeneratorOn1.Play();
         TotalFound.text = "Total activated: " + totalGenerators + " / 4" ;
         isUsedGen1 = true;
     }
     void Generator2()
     {
         totalGenerators++;
+        GeneratorOn2.Play();
         TotalFound.text = "Total activated: " + totalGenerators + " / 4";
         isUsedGen2 = true;
     }
     void Generator3()
     {
         totalGenerators++;
+        GeneratorOn3.Play();
         TotalFound.text = "Total activated: " + totalGenerators + " / 4";
         isUsedGen3 = true;
     }
     void Generator4()
     {
         totalGenerators++;
+        GeneratorOn4.Play();
         TotalFound.text = "Activate the switch";
         currentObjectiveText.text = "Turn on the lights";
         typewriterUILeft.Type();

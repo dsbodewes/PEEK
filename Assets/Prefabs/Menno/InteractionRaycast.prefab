@@ -50,3 +50,9 @@ MonoBehaviour:
   timerHUD: {fileID: 0}
   currentObjectiveText: {fileID: 0}
   TotalFound: {fileID: 0}
+  typewriterUILeft: {fileID: 0}
+  typewriterUIRight: {fileID: 0}
+  GeneratorOn1: {fileID: 0}
+  GeneratorOn2: {fileID: 0}
+  GeneratorOn3: {fileID: 0}
+  GeneratorOn4: {fileID: 0}
