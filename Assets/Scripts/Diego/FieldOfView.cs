@@ -95,8 +95,8 @@ public class FieldOfView : MonoBehaviour
     }
 
 
-    /*void Jumpscare()
+    void Jumpscare()
     {
-        Debug.Log("BOOOOOOO AHHHHHHHH");
-    }*/
+        Debug.Log("jojojojo");
+    }
 }
