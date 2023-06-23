@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Stamina Bar //
     public StaminaBar staminaBar;
+    public GameObject staminaBarUI;
 
     void Start()
     {
@@ -78,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isSprinting = true;
             playerStamina -= staminaDrain * Time.deltaTime;
+            staminaBarUI.SetActive(true);
             if (playerStamina < 0)
             {
                 playerStamina = 0;
@@ -95,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
                 if (playerStamina > maxStamina)
                 {
                     playerStamina = maxStamina;
+                    staminaBarUI.SetActive(false);
                 }
             }
         }

@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene(SceneName);
+        Time.timeScale = 1.0f;
     }
 
     public void Quit()

@@ -12,7 +12,7 @@ public class PlayerInteract : MonoBehaviour
     public float range = 2;
 
     //Interaction
-    Interaction interaction;
+    //Information information;
 
     //Timer
     public int holdKey = 5;
@@ -21,11 +21,11 @@ public class PlayerInteract : MonoBehaviour
     public GameObject timerHUD;
 
     // Generator
-    int totalGenerators = 0;
-    bool isUsedGen1 = false;
+    int totalGen = 0;
+    /*bool isUsedGen1 = false;
     bool isUsedGen2 = false;
     bool isUsedGen3 = false;
-    bool isUsedGen4 = false;
+    bool isUsedGen4 = false;*/
     bool isUsedSwitch = false;
     bool isUsedWell = false;
 
@@ -33,22 +33,30 @@ public class PlayerInteract : MonoBehaviour
     int totalObjects = 0;
 
     //HUD Text
-    public TMP_Text currentObjectiveText;
-    public TMP_Text TotalFound;
+    public TMP_Text topLeftText;
+    public TMP_Text topRightText;
     public TypewriterUI typewriterUILeft;
     public TypewriterUI typewriterUIRight;
 
     //Sounds
-    public AudioSource GeneratorOn1;
+    /*public AudioSource GeneratorOn1;
     public AudioSource GeneratorOn2;
     public AudioSource GeneratorOn3;
-    public AudioSource GeneratorOn4;
+    public AudioSource GeneratorOn4;*/
     //public AudioSource GeneratorFix;
+
+    //Enemy
+    public GameObject Enemy;
+
+
+    public Generator currentGen;
+
+    public Information currentInfo;
+
 
     void Start()
     {
         holdTimer = holdKey;
-        interaction = GameObject.FindGameObjectWithTag("information").GetComponent<Interaction>();
     }
 
     void Update()
@@ -62,9 +70,53 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, range))
         {
-            // Generator 1
+            //generator
+            Generator gen = hit.collider.GetComponent<Generator>();
+            currentGen = gen;
 
-            if (hit.collider.tag == "generator1")
+            Information information = hit.collider.GetComponent<Information>();
+            currentInfo = information;
+
+            if (currentGen != null)
+            {
+                if (Input.GetKey("e"))
+                {
+                    timerHUD.gameObject.SetActive(true);
+                    timerUI.SetValue();
+                    if (holdTimer < 0)
+                    {
+                        currentGen.Play();
+                        totalGen++;
+                    }
+
+                   /* if (totalGen == 4)
+                    {
+                        topRightText.text = "Activate the switch";
+                        topLeftText.text = "Turn on the lights";
+                        typewriterUILeft.Type();
+                        typewriterUIRight.Type();
+                    }
+
+                    else if (totalGen >= 4)
+                    {
+                        topRightText.text = "Total activated: " + totalGen + " / 4";
+                    }*/
+                }
+
+                else
+                {
+                    timerHUD.gameObject.SetActive(false);
+                    currentGen.Stop();
+                    currentGen = null;
+                }
+            }
+
+
+            //------------------
+
+
+
+            /*if (hit.collider.tag == "generator1")
             {
                 if (Input.GetKey("e"))
                 {
@@ -181,7 +233,7 @@ public class PlayerInteract : MonoBehaviour
                     //GeneratorFix.Stop();
                     holdTimer = holdKey;
                 }
-            }
+            }*/
 
             // Switch
 
@@ -189,7 +241,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKey("e"))
                 {
-                    if (isUsedGen4 == true)
+                    if (totalGen >= 4)
                     {
                         if (isUsedSwitch == false)
                         {
@@ -200,6 +252,7 @@ public class PlayerInteract : MonoBehaviour
                             {
                                 Switch();
                                 timerHUD.gameObject.SetActive(false);
+                                Gate();
                             }
                         }
                     }
@@ -239,17 +292,21 @@ public class PlayerInteract : MonoBehaviour
 
             // Object
 
-            else if (hit.collider.tag == "information")
+            else if (currentInfo != null)
             {
-                if (Input.GetKey("e"))
+                if (Input.GetKeyDown("e"))
                 {
                     Object();
+                }
+                else
+                {
+                    currentInfo = null;
                 }
             }
         }
     }
 
-    void Generator1()
+    /*void Generator1()
     {
         totalGenerators++;
         GeneratorOn1.Play();
@@ -279,12 +336,12 @@ public class PlayerInteract : MonoBehaviour
         typewriterUILeft.Type();
         typewriterUIRight.Type();
         isUsedGen4 = true;
-    }
+    }*/
 
     void Switch()
     {
-        TotalFound.text = "ESCAPE";
-        currentObjectiveText.text = "Escape through the gate";
+        topRightText.text = "ESCAPE";
+        topLeftText.text = "Escape through the gate";
         typewriterUILeft.Type();
         typewriterUIRight.Type();
         isUsedSwitch = true;
@@ -298,20 +355,31 @@ public class PlayerInteract : MonoBehaviour
 
     void Object()
     {
-        interaction.Object();
+        currentInfo.Interaction();
         totalObjects++;
 
         if (totalObjects < 8)
         {
-            TotalFound.text = "Total clues found: " + totalObjects + " / 8";
+            topRightText.text = "Total clues found: " + totalObjects + " / 8";
         }
         
         if (totalObjects == 8)
         {
-            currentObjectiveText.text = "Fix the generators";
-            TotalFound.text = "Total activated: " + totalGenerators + " / 4";
+            topLeftText.text = "Fix the generators";
+            topRightText.text = "Total activated: " + totalGen + " / 4";
             typewriterUILeft.Type();
             typewriterUIRight.Type();
         }
+    }
+
+    void Gate()
+    {
+        Enemy.SetActive(false);
+        Enemy.SetActive(true);
+    }
+
+    void LightsOn()
+    {
+
     }
 }

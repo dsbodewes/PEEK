@@ -4,14 +4,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Interaction : MonoBehaviour
+public class Information : MonoBehaviour
 {
-    public GameObject information;
+    public GameObject informationUI;
     public GameObject player;
 
     public float maxDistance = 3;
-
-    bool isUsedObject = false;
 
     void Update()
     {
@@ -20,16 +18,11 @@ public class Interaction : MonoBehaviour
 
         if (distance > maxDistance)
         {
-            information.SetActive(false);
+            informationUI.SetActive(false);
         }
     }
-    public void Object()
+    public void Interaction()
     {
-        if (isUsedObject == false)
-        {
-            isUsedObject = true;
-        }
-
-        information.gameObject.SetActive(true);
+        informationUI.gameObject.SetActive(true);
     }
 }
