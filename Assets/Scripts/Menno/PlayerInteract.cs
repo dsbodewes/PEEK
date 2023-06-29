@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
     //Information information;
 
     //Timer
-    public int holdKey = 5;
+    public int holdKey = 7;
     float holdTimer;
     public TimerUI timerUI;
     public GameObject timerHUD;
@@ -46,17 +47,20 @@ public class PlayerInteract : MonoBehaviour
     //public AudioSource GeneratorFix;
 
     //Enemy
-    public GameObject Enemy;
+    public Gate gate;
 
 
     public Generator currentGen;
 
     public Information currentInfo;
 
-
+    public UnityEvent Event_SwitchOn;
     void Start()
     {
         holdTimer = holdKey;
+
+        Event_SwitchOn = new UnityEvent();
+        Event_SwitchOn.AddListener(Switch);
     }
 
     void Update()
@@ -86,31 +90,28 @@ public class PlayerInteract : MonoBehaviour
                     if (holdTimer < 0)
                     {
                         currentGen.Play();
+                        timerHUD.gameObject.SetActive(false);
                         totalGen++;
-                    }
 
-                   /* if (totalGen == 4)
-                    {
-                        topRightText.text = "Activate the switch";
-                        topLeftText.text = "Turn on the lights";
-                        typewriterUILeft.Type();
-                        typewriterUIRight.Type();
+                        if (totalGen == 4)
+                        {
+                            topRightText.text = "Activate the switch";
+                            topLeftText.text = "Turn on the lights";
+                            typewriterUILeft.Type();
+                            typewriterUIRight.Type();
+                        }
                     }
-
-                    else if (totalGen >= 4)
-                    {
-                        topRightText.text = "Total activated: " + totalGen + " / 4";
-                    }*/
                 }
 
                 else
                 {
                     timerHUD.gameObject.SetActive(false);
+                    timerUI.ResetValue();
+                    holdTimer = holdKey;
                     currentGen.Stop();
                     currentGen = null;
                 }
             }
-
 
             //------------------
 
@@ -250,9 +251,9 @@ public class PlayerInteract : MonoBehaviour
 
                             if (holdTimer < 0)
                             {
-                                Switch();
                                 timerHUD.gameObject.SetActive(false);
-                                Gate();
+                                Event_SwitchOn.Invoke();
+                                gate.GateEnemy();
                             }
                         }
                     }
@@ -370,16 +371,5 @@ public class PlayerInteract : MonoBehaviour
             typewriterUILeft.Type();
             typewriterUIRight.Type();
         }
-    }
-
-    void Gate()
-    {
-        Enemy.SetActive(false);
-        Enemy.SetActive(true);
-    }
-
-    void LightsOn()
-    {
-
     }
 }
