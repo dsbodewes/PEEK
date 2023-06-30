@@ -8,6 +8,7 @@ public class Lights : MonoBehaviour
     //public PlayerInteract pi;
     public void Start()
     {
+        LightsOn();
         //Find gameobject with PlayerInteract....
         PlayerInteract pi = GetComponent<PlayerInteract>();
 

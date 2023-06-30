@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    int totalGen = 0;
     bool isGenOn = false;
 
     //Timer
