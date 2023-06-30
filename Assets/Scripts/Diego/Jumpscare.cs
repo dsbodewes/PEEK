@@ -5,29 +5,35 @@ using UnityEngine;
 public class Jumpscare : MonoBehaviour
 {
     public AudioSource JsSound;
-    public GameObject Player;
-    public GameObject JsCam;
     public GameObject JsFlash;
-    public Collider JsCollider;
+    public GameObject LoseUI;
 
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider JsCollider)
     {
         if (JsCollider.gameObject.tag == "Player")
         {
-            JsSound.Play();
-            JsCam.SetActive(true);
-            Player.SetActive(false);
-            JsFlash.SetActive(true);
-            StartCoroutine(JsEnd());
+            ScareJump();
         }
     }
 
     IEnumerator JsEnd()
     {
         yield return new WaitForSeconds(1.46f);
-        Player.SetActive(true); //Hier ga je dood, dit moet nog verander worden.
-        JsCam.SetActive(false); //Deze gaat misscien weg.
-        JsFlash.SetActive(false); //Geld ook voor deze.
+        JsFlash.SetActive(false);
+        Lose();
+    }
+    
+    private void ScareJump()
+    {
+        JsSound.Play();
+        JsFlash.SetActive(true);
+        StartCoroutine(JsEnd());
     }
 
+    private void Lose()
+    {
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.Confined;
+        LoseUI.SetActive(true);
+    }
 }
