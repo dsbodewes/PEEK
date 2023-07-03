@@ -14,7 +14,7 @@ public class PlayerInteract : MonoBehaviour
 
     //Timer
     public int holdKey = 7;
-    float holdTimer;
+    public float holdTimer;
     public TimerUI timerUI;
     public GameObject timerHUD;
 
@@ -40,6 +40,7 @@ public class PlayerInteract : MonoBehaviour
     public TMP_Text topRightText;
     public TypewriterUI typewriterUILeft;
     public TypewriterUI typewriterUIRight;
+    public GameObject InstructionUI;
 
     //Gate
     public Gate gate;
@@ -74,6 +75,7 @@ public class PlayerInteract : MonoBehaviour
 
             if (currentGen != null)
             {
+                InstructionUI.SetActive(true);
                 if (Input.GetKey("e"))
                 {
                     timerHUD.gameObject.SetActive(true);
@@ -97,6 +99,7 @@ public class PlayerInteract : MonoBehaviour
             // Switch
             if (hit.collider.tag == "switch")
             {
+                InstructionUI.SetActive(true);
                 if (Input.GetKey("e"))
                 {
                     if (totalGen >= 4)
@@ -126,6 +129,7 @@ public class PlayerInteract : MonoBehaviour
             // Well
             if (hit.collider.tag == "well")
             {
+                InstructionUI.SetActive(true);
                 if (Input.GetKey("e"))
                 {
                     if (isUsedWell == false)
@@ -150,6 +154,7 @@ public class PlayerInteract : MonoBehaviour
             // Object
             else if (currentInfo != null)
             {
+                InstructionUI.SetActive(true);
                 if (Input.GetKeyDown("e"))
                 {
                     Object();
@@ -159,6 +164,10 @@ public class PlayerInteract : MonoBehaviour
                     currentInfo = null;
                 }
             }
+        }
+        else
+        {
+            InstructionUI.SetActive(false);
         }
     }
 
