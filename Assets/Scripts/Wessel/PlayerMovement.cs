@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Stamina Regen //
     public float staminaDrain = 30.0f;
-    public float staminaRegen = 12.0f;
+    public float staminaRegen = 8.0f;
 
     // Stamina Bar //
     public StaminaBar staminaBar;
