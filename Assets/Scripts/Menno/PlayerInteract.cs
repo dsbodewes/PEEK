@@ -28,6 +28,8 @@ public class PlayerInteract : MonoBehaviour
 
     //Well
     bool isUsedWell = false;
+    public GameObject ObjectWell;
+    public GameObject BucketWell;
 
     //Object
     public Information currentInfo;
@@ -175,7 +177,8 @@ public class PlayerInteract : MonoBehaviour
 
     void well()
     {
-        Debug.Log("its a well");
+        ObjectWell.SetActive(true);
+        BucketWell.SetActive(true);
         isUsedWell = true;
     }
 

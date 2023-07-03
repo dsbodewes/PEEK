@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && isMoving && playerStamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && isMoving && playerStamina > 1)
         {
             isSprinting = true;
             playerStamina -= staminaDrain * Time.deltaTime;
