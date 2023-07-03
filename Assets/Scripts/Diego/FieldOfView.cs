@@ -21,6 +21,8 @@ public class FieldOfView : MonoBehaviour
 
     public NavMeshAgent enemy;
 
+    public AudioSource WalkAudio;
+
     private void Start()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
@@ -70,9 +72,11 @@ public class FieldOfView : MonoBehaviour
         {
             enemy.SetDestination(playerRef.transform.position);
             angle = 360;
+            WalkAudio.Play();
         }
         else
         {
+            WalkAudio.Stop();
             angle = 90;
         }
     }

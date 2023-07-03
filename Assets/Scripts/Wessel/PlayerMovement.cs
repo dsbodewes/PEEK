@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public StaminaBar staminaBar;
     public GameObject staminaBarUI;
 
+
     void Start()
     {
         maxStamina = playerStamina;

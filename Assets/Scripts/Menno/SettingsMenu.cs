@@ -14,7 +14,6 @@ public class SettingsMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropDown;
 
     Resolution[] resolutions;
-    // public AudioMixer audioMixer;
 
     private void Start()//instantly load changed settings
     {
@@ -44,6 +43,13 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropDown.RefreshShownValue();
     }
 
+    private void Update()
+    {
+        float volumeValue = volumeSlider.value;
+        PlayerPrefs.SetFloat("VolumeValue", volumeValue);
+        LoadValues();
+    }
+
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
@@ -61,20 +67,10 @@ public class SettingsMenu : MonoBehaviour
         volumeTextUI.text = volume.ToString(".00");
     }
 
-    public void SaveVolumeButton()
-    {
-        float volumeValue = volumeSlider.value;
-        PlayerPrefs.SetFloat("VolumeValue", volumeValue);
-        // audioMixer.SetFloat("MainVolume", volumeValue);
-        LoadValues();
-    }
-
     void LoadValues()
     {
         float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
         volumeSlider.value = volumeValue;
         AudioListener.volume = volumeValue;
-
-        // audioMixer.volume = volumeValue;
     }
 }
