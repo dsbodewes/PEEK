@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+//using UnityEngine.Rendering.PostProcessing;
 
 public class FieldOfView : MonoBehaviour
 {
@@ -23,12 +24,15 @@ public class FieldOfView : MonoBehaviour
 
     public AudioSource WalkAudio;
 
+   // private PostProcessVolume postProcessVolume;
+    //private Vignette vignette;
+
     private void Start()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
+        //postProcessVolume = GetComponent<PostProcessVolume>();
     }
-
 
 
     private IEnumerator FOVRoutine()
@@ -73,11 +77,13 @@ public class FieldOfView : MonoBehaviour
             enemy.SetDestination(playerRef.transform.position);
             angle = 360;
             WalkAudio.Play();
+            //vignette.intensity.value = .6f;
         }
         else
         {
             WalkAudio.Stop();
             angle = 90;
+            //vignette.intensity.value = .3f;
         }
     }
 

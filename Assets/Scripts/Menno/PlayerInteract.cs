@@ -45,6 +45,9 @@ public class PlayerInteract : MonoBehaviour
     //Gate
     public Gate gate;
 
+    //Enemy
+    public GameObject enemy;
+
     void Start()
     {
         holdTimer = holdKey;
@@ -113,6 +116,7 @@ public class PlayerInteract : MonoBehaviour
                         if (holdTimer < 0)
                         {
                             timerHUD.gameObject.SetActive(false);
+                            enemy.gameObject.SetActive(false);
                             Event_SwitchOn.Invoke();
                             gate.GateEnemy();
                         }

@@ -2855,6 +2855,12 @@ MonoBehaviour:
   timeBtwChars: 0.06
   leadingChar: '|'
   leadingCharBeforeDelay: 0
+--- !u!1 &396855089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4701873707614299763, guid: 344255aa40c15af4ebad9368abb400b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 627418250345847410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &426440940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0b5e30e284e7514183569f0589ac93f,
@@ -15384,7 +15390,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fb111659ab9998c46be713de75634bd0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16666,6 +16672,11 @@ PrefabInstance:
       propertyPath: gate
       value: 
       objectReference: {fileID: 1490981630}
+    - target: {fileID: 936199251241307797, guid: 9093d59cfce4bba488b80813bee60272,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 396855089}
     - target: {fileID: 936199251241307797, guid: 9093d59cfce4bba488b80813bee60272,
         type: 3}
       propertyPath: range
