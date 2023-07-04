@@ -20,7 +20,7 @@ public class PlayerInteract : MonoBehaviour
 
     //Generator
     public Generator currentGen;
-    int totalGen = 0;
+    Dictionary<Generator, bool> activatedGenerators = new Dictionary<Generator, bool>();
 
     //Switch
     bool isUsedSwitch = false;
@@ -78,12 +78,15 @@ public class PlayerInteract : MonoBehaviour
                 InstructionUI.SetActive(true);
                 if (Input.GetKey("e"))
                 {
-                    timerHUD.gameObject.SetActive(true);
-                    timerUI.SetValue();
-                    if (holdTimer < 0)
+                    if (totalObjects == 8) // Check if totalObjects is 8
                     {
-                        Generator();
-                        timerHUD.gameObject.SetActive(false);
+                        timerHUD.gameObject.SetActive(true);
+                        timerUI.SetValue();
+                        if (holdTimer < 0)
+                        {
+                            Generator();
+                            timerHUD.gameObject.SetActive(false);
+                        }
                     }
                 }
                 else
@@ -102,21 +105,18 @@ public class PlayerInteract : MonoBehaviour
                 InstructionUI.SetActive(true);
                 if (Input.GetKey("e"))
                 {
-                    //if (totalGen >= 4)
-                    //{
-                        if (isUsedSwitch == false)
-                        {
-                            timerHUD.gameObject.SetActive(true);
-                            timerUI.SetValue();
+                    if (isUsedSwitch == false)
+                    {
+                        timerHUD.gameObject.SetActive(true);
+                        timerUI.SetValue();
 
-                            if (holdTimer < 0)
-                            {
-                                timerHUD.gameObject.SetActive(false);
-                                Event_SwitchOn.Invoke();
-                                gate.GateEnemy();
-                            }
+                        if (holdTimer < 0)
+                        {
+                            timerHUD.gameObject.SetActive(false);
+                            Event_SwitchOn.Invoke();
+                            gate.GateEnemy();
                         }
-                    //}
+                    }
                 }
                 else
                 {
@@ -139,7 +139,7 @@ public class PlayerInteract : MonoBehaviour
                         if (holdTimer < 0)
                         {
                             timerHUD.gameObject.SetActive(false);
-                             well();
+                            well();
                         }
                     }
                 }
@@ -193,16 +193,17 @@ public class PlayerInteract : MonoBehaviour
 
     void Generator()
     {
-        if (totalObjects == 8)
+        if (!activatedGenerators.ContainsKey(currentGen))
         {
-            currentGen.Play();
-            totalGen++;
-
-            if (totalGen < 4)
+            if (totalObjects == 8)
             {
-                topRightText.text = "Total activated: " + totalGen + " / 4";
+                currentGen.Play();
+                activatedGenerators.Add(currentGen, true);
+                topRightText.text = "Total activated: " + activatedGenerators.Count + " / 4";
             }
-            if (totalGen == 4)
+
+
+            if (activatedGenerators.Count == 4)
             {
                 topRightText.text = "Activate the switch";
                 topLeftText.text = "Turn on the lights";
@@ -214,19 +215,22 @@ public class PlayerInteract : MonoBehaviour
 
     void Object()
     {
-        currentInfo.Interaction();
-        totalObjects++;
+        if (!currentInfo.isInteracted) // Check if the object is already interacted
+        {
+            currentInfo.Interaction();
+            totalObjects++;
 
-        if (totalObjects < 8)
-        {
-            topRightText.text = "Total clues found: " + totalObjects + " / 8";
-        }
-        if (totalObjects == 8)
-        {
-            topLeftText.text = "Fix the generators";
-            topRightText.text = "Total activated: " + totalGen + " / 4";
-            typewriterUILeft.Type();
-            typewriterUIRight.Type();
+            if (totalObjects < 8)
+            {
+                topRightText.text = "Total clues found: " + totalObjects + " / 8";
+            }
+            if (totalObjects == 8)
+            {
+                topLeftText.text = "Fix the generators";
+                topRightText.text = "Total activated: " + activatedGenerators.Count + " / 4";
+                typewriterUILeft.Type();
+                typewriterUIRight.Type();
+            }
         }
     }
 }

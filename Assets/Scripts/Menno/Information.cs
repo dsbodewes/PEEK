@@ -11,6 +11,8 @@ public class Information : MonoBehaviour
 
     public float maxDistance = 3;
 
+    public bool isInteracted { get; private set; }
+
     void Update()
     {
         float distance = Vector3.Distance(player.transform.position, transform.position);
@@ -23,6 +25,7 @@ public class Information : MonoBehaviour
     }
     public void Interaction()
     {
-        informationUI.gameObject.SetActive(true);
+        informationUI.SetActive(true);
+        isInteracted = true;
     }
 }
