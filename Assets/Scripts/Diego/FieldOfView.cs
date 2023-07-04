@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-//using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using System;
 
 public class FieldOfView : MonoBehaviour
 {
@@ -24,16 +26,42 @@ public class FieldOfView : MonoBehaviour
 
     public AudioSource WalkAudio;
 
-   // private PostProcessVolume postProcessVolume;
-    //private Vignette vignette;
+    public Volume volume;
+    private Vignette vignette;
+    private ChromaticAberration chromaticAberration;
+
+    private float maxVignetteIntensity = 1f;
+    private float minVignetteIntensity = 0.3f;
+    public float vignetteIncreaseSpeed = 0.07f;
+
+    private float maxChromaticAberrationIntensity = 1f;
+    private float minChromaticAberrationIntensity = 0.1f;
+    public float chromaticAberrationIncreaseSpeed = 0.25f;
 
     private void Start()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
-        //postProcessVolume = GetComponent<PostProcessVolume>();
+        volume.profile.TryGet(out vignette);
+        volume.profile.TryGet(out chromaticAberration);
     }
 
+    private void Update()
+    {
+        if (canSeePlayer)
+        {
+            float targetVignetteIntensity = Mathf.Clamp(vignette.intensity.value + vignetteIncreaseSpeed * Time.deltaTime, minVignetteIntensity, maxVignetteIntensity);
+            vignette.intensity.value = targetVignetteIntensity;
+
+            float targetChromaticAberrationIntensity = Mathf.Clamp(chromaticAberration.intensity.value + chromaticAberrationIncreaseSpeed * Time.deltaTime, minChromaticAberrationIntensity, maxChromaticAberrationIntensity);
+            chromaticAberration.intensity.value = targetChromaticAberrationIntensity;
+        }
+        else
+        {
+            vignette.intensity.value = minVignetteIntensity;
+            chromaticAberration.intensity.value = minChromaticAberrationIntensity;
+        }
+    }
 
     private IEnumerator FOVRoutine()
     {
@@ -45,7 +73,6 @@ public class FieldOfView : MonoBehaviour
             FieldOfViewCheck();
         }
     }
-
 
     private void FieldOfViewCheck()
     {
@@ -72,19 +99,16 @@ public class FieldOfView : MonoBehaviour
         else if (canSeePlayer)
             canSeePlayer = false;
 
-        if (canSeePlayer == true)
+        if (canSeePlayer)
         {
             enemy.SetDestination(playerRef.transform.position);
             angle = 360;
             WalkAudio.Play();
-            //vignette.intensity.value = .6f;
         }
         else
         {
             WalkAudio.Stop();
             angle = 90;
-            //vignette.intensity.value = .3f;
         }
     }
-
 }
