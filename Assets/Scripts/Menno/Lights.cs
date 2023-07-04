@@ -5,17 +5,15 @@ using UnityEngine;
 public class Lights : MonoBehaviour
 {
     public GameObject Light;
-    //public PlayerInteract pi;
+
     public void Start()
     {
-        LightsOn();
-        //Find gameobject with PlayerInteract....
-        PlayerInteract pi = GetComponent<PlayerInteract>();
-
+        PlayerInteract pi = FindObjectOfType<PlayerInteract>();
+    
         pi.Event_SwitchOn.AddListener(LightsOn);
     }
     public void LightsOn()
     {
-        Light.SetActive(true);
+        Light.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
     }
 }

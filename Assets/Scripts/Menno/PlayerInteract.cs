@@ -102,8 +102,8 @@ public class PlayerInteract : MonoBehaviour
                 InstructionUI.SetActive(true);
                 if (Input.GetKey("e"))
                 {
-                    if (totalGen >= 4)
-                    {
+                    //if (totalGen >= 4)
+                    //{
                         if (isUsedSwitch == false)
                         {
                             timerHUD.gameObject.SetActive(true);
@@ -116,7 +116,7 @@ public class PlayerInteract : MonoBehaviour
                                 gate.GateEnemy();
                             }
                         }
-                    }
+                    //}
                 }
                 else
                 {
