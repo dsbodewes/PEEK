@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 687cd9c2262b50940aa518775592355d
+guid: 04f4bc3d08ecfb54a909aeb4b5511b53
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: plattegro
-    second: {fileID: 2100000, guid: 4fe6362a93722164bae8ae388f6ad336, type: 2}
+      name: plattegrondtexture4
+    second: {fileID: 2800000, guid: 1ec1a22f8c5175e4f9df6d152fa7816e, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -81,7 +81,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -100,7 +100,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
