@@ -97,7 +97,6 @@ public class PlayerInteract : MonoBehaviour
                     timerHUD.gameObject.SetActive(false);
                     timerUI.ResetValue();
                     holdTimer = holdKey;
-                    currentGen.Stop();
                     currentGen = null;
                 }
             }
