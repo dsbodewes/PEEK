@@ -1,20 +1,14 @@
 fileFormatVersion: 2
-guid: 687cd9c2262b50940aa518775592355d
+guid: 8e30bca1f52cf394a9adfce6926dac86
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: plattegro
-    second: {fileID: 1879547563249798202, guid: 8e30bca1f52cf394a9adfce6926dac86,
-      type: 3}
-  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: plattegrond
-    second: {fileID: 2800000, guid: 1850a2ba8077ea84e89a3b116290a021, type: 3}
+      name: plattegrondtexture4
+    second: {fileID: 2800000, guid: 86983a09a1fecbd4ab36bb6da9a320a9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -52,7 +46,7 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     importCameras: 0
     importLights: 0
     nodeNameCollisionStrategy: 1
@@ -87,7 +81,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -106,7 +100,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
