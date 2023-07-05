@@ -107,17 +107,20 @@ public class PlayerInteract : MonoBehaviour
                 InstructionUI.SetActive(true);
                 if (Input.GetKey("e"))
                 {
-                    if (isUsedSwitch == false)
+                    if (activatedGenerators.Count == 4)
                     {
-                        timerHUD.gameObject.SetActive(true);
-                        timerUI.SetValue();
-
-                        if (holdTimer < 0)
+                        if (isUsedSwitch == false)
                         {
-                            timerHUD.gameObject.SetActive(false);
-                            enemy.gameObject.SetActive(false);
-                            Event_SwitchOn.Invoke();
-                            gate.GateEnemy();
+                            timerHUD.gameObject.SetActive(true);
+                            timerUI.SetValue();
+
+                            if (holdTimer < 0)
+                            {
+                                timerHUD.gameObject.SetActive(false);
+                                enemy.gameObject.SetActive(false);
+                                Event_SwitchOn.Invoke();
+                                gate.GateEnemy();
+                            }
                         }
                     }
                 }
