@@ -16,7 +16,7 @@ PlayerSettings:
   productName: PEEK
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -42,8 +42,10 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 21300000, guid: caa930b1f0f447d4499f863890a429b4, type: 3}
+  - logo: {fileID: 21300000, guid: 9c0f788e719ba5d49b2f3942a6297d85, type: 3}
     duration: 2
+  - logo: {fileID: 21300000, guid: 263609bdfd50a974e8719bbf04acf0e5, type: 3}
+    duration: 3.5
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 263c5738651fb4e49bc7a49891a74e99,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
