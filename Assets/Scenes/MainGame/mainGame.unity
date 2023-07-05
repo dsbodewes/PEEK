@@ -13327,6 +13327,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 27.267979, y: 0, z: 21.419483}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &376266666 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5f6b5458f333e0241b9aedc96ae09f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 376266663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &377099372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30919,6 +30925,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1639295100, guid: 9093d59cfce4bba488b80813bee60272, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5012638
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639295100, guid: 9093d59cfce4bba488b80813bee60272, type: 3}
+      propertyPath: m_Color.g
+      value: 0.57135373
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639295100, guid: 9093d59cfce4bba488b80813bee60272, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639295100, guid: 9093d59cfce4bba488b80813bee60272, type: 3}
       propertyPath: m_InnerSpotAngle
       value: 30
       objectReference: {fileID: 0}
@@ -44440,6 +44458,27 @@ PrefabInstance:
 --- !u!1 &1223812165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4701873707614299763, guid: 344255aa40c15af4ebad9368abb400b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1223812164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1223812166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223812165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e03e75862910f4bb9a4db300007b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1223812167}
+  range: 100
+  centrePoint: {fileID: 376266666}
+--- !u!195 &1223812167 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 4701873707614299762, guid: 344255aa40c15af4ebad9368abb400b0,
     type: 3}
   m_PrefabInstance: {fileID: 1223812164}
   m_PrefabAsset: {fileID: 0}
@@ -71937,7 +71976,7 @@ PrefabInstance:
     - target: {fileID: 5715504961959824873, guid: 70fb3b2c8133c3840894c0b9ee016737,
         type: 3}
       propertyPath: m_Intensity
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70fb3b2c8133c3840894c0b9ee016737, type: 3}
