@@ -240,10 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GenOnAudio: {fileID: 87895074}
-  topLeftText: {fileID: 1833149689}
-  topRightText: {fileID: 1579316060}
-  typewriterUILeft: {fileID: 1833149692}
-  typewriterUIRight: {fileID: 1579316063}
 --- !u!82 &87895074
 AudioSource:
   m_ObjectHideFlags: 0
@@ -611,10 +607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GenOnAudio: {fileID: 129563996}
-  topLeftText: {fileID: 1833149689}
-  topRightText: {fileID: 1579316060}
-  typewriterUILeft: {fileID: 1833149692}
-  typewriterUIRight: {fileID: 1579316063}
 --- !u!1 &153578959
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,10 +987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GenOnAudio: {fileID: 265127000}
-  topLeftText: {fileID: 1833149689}
-  topRightText: {fileID: 1579316060}
-  typewriterUILeft: {fileID: 1833149692}
-  typewriterUIRight: {fileID: 1579316063}
 --- !u!82 &265127000
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1491,10 +1479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GenOnAudio: {fileID: 351663307}
-  topLeftText: {fileID: 1833149689}
-  topRightText: {fileID: 1579316060}
-  typewriterUILeft: {fileID: 1833149692}
-  typewriterUIRight: {fileID: 1579316063}
 --- !u!1 &373603229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3399,8 +3383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1978688778}
-  isMoving: 0
-  sprintSpeed: 8
+  cameraTransform: {fileID: 330585546}
   speed: 9
   gravity: -9.81
   groundCheck: {fileID: 2105349218}
