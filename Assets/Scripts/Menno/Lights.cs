@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class Lights : MonoBehaviour
 {
-    public GameObject Light;
+    public Material Light;
 
-    public void Start()
-    {
-        PlayerInteract pi = FindObjectOfType<PlayerInteract>();
-    
-        pi.Event_SwitchOn.AddListener(LightsOn);
-    }
     public void LightsOn()
     {
-        Light.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+       Light.EnableKeyword("_EMISSION");
     }
 }

@@ -48,6 +48,9 @@ public class PlayerInteract : MonoBehaviour
     //Enemy
     public GameObject enemy;
 
+    //Lights
+    public Lights lightsController;
+
     void Start()
     {
         holdTimer = holdKey;
@@ -120,6 +123,7 @@ public class PlayerInteract : MonoBehaviour
                                 enemy.gameObject.SetActive(false);
                                 Event_SwitchOn.Invoke();
                                 gate.GateEnemy();
+                                lightsController.LightsOn();
                             }
                         }
                     }
